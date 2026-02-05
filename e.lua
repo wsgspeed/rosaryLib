@@ -1,13 +1,4 @@
-
---[[
-# moonlib v1
-# developed by jakep#0001
-# fully open source enjoy (;
---]]
-
-
 local lib = {}
-
 
 function lib:CreateWindow(name, colorid, imageid)
 
@@ -90,8 +81,6 @@ local Line_9 = Instance.new("Frame")
 local StatusBar = Instance.new("Frame")
 local Decor_3 = Instance.new("Frame")
 local Zoom = Instance.new("Frame")
-
---Properties:
 
 MoonLIB.Name = "MoonLIB"
 MoonLIB.Parent = game.CoreGui
@@ -231,10 +220,6 @@ Buttons.ZIndex = 2
 UIListLayout_2.Parent = Buttons
 UIListLayout_2.FillDirection = Enum.FillDirection.Horizontal
 UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
-
-
-
-
 
 Resizers.Name = "Resizers"
 Resizers.Parent = Frame
@@ -648,7 +633,6 @@ Line_8.Position = UDim2.new(1, 0, 0, 0)
 Line_8.Size = UDim2.new(0, 1, 1, 0)
 Line_8.ZIndex = 12
 
-
 TopDecor_2.Name = "TopDecor"
 TopDecor_2.Parent = Timeline
 TopDecor_2.Active = false
@@ -720,8 +704,6 @@ local InformationLBL = Instance.new("TextLabel")
 local ExecutorLabel = Instance.new("TextLabel")
 local VersionLabel = Instance.new("TextLabel")
 local FPSLBL = Instance.new("TextLabel")
-
---Properties:
 
 MoonHome.Name = "MoonHome"
 MoonHome.Parent = Container
@@ -821,8 +803,6 @@ VersionLabel.TextSize = 23.000
 VersionLabel.TextWrapped = true
 VersionLabel.TextXAlignment = Enum.TextXAlignment.Left
 
-
-
 FPSLBL.Name = "FPS"
 FPSLBL.Parent = MoonHome
 FPSLBL.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -854,56 +834,44 @@ local function HeartbeatUpdate()
 	FrameUpdateTable[1] = LastIteration
 	local FPS = (math.floor(TimeFunction() - Start >= 1 and #FrameUpdateTable or #FrameUpdateTable / (TimeFunction() - Start)))
     FPSLBL.Text = "<b>FPS: ".. tostring(FPS) .. "          </b>"
-
 end
 
 Start = TimeFunction()
 RunService.Heartbeat:Connect(HeartbeatUpdate)
 
--- Scripts:
-
-local function NPQPWX_fake_script() -- AvatarImage.LocalScript 
+local function NPQPWX_fake_script()
 	local script = Instance.new('LocalScript', AvatarImage)
-
 	local Players = game:GetService("Players")
-	
 	local player = Players.LocalPlayer
-	
 	local userId = player.UserId
 	local thumbType = Enum.ThumbnailType.HeadShot
 	local thumbSize = Enum.ThumbnailSize.Size420x420
 	local content, isReady = Players:GetUserThumbnailAsync(userId, thumbType, thumbSize)
-	
-	
 	script.Parent.Image = content
 end
 coroutine.wrap(NPQPWX_fake_script)()
 
-
-local function ZURCG_fake_script() -- Close.Script 
+local function ZURCG_fake_script()
 	local script = Instance.new('Script', Close)
-
 	script.Parent.MouseButton1Click:Connect(function()
 		script.Parent.Parent.Parent.Parent.Parent.Parent.MoonLIB:Destroy()
 	end)
 end
 coroutine.wrap(ZURCG_fake_script)()
-local function PPJQ_fake_script() -- Frame.Script 
-	local script = Instance.new('Script', Frame)
 
+local function PPJQ_fake_script()
+	local script = Instance.new('Script', Frame)
 	script.Parent.Draggable = true
 	script.Parent.Active = true
 	script.Parent.Selectable = true
 end
 coroutine.wrap(PPJQ_fake_script)()
 
-
 local EpicLib = {}
 
 function EpicLib:CreateTab(text)
     text = text or "NewTab"
-
-         
+    
     local MainButton = Instance.new("ImageButton")
     local Label = Instance.new("TextLabel")
     local Hover = Instance.new("Frame")
@@ -912,11 +880,8 @@ function EpicLib:CreateTab(text)
     local Line_3 = Instance.new("Frame")
     local Line_4 = Instance.new("Frame")
     local TextLabel = Instance.new("TextLabel")
-    local egrid = Instance.new("UIGridLayout")
     local MainContainer = Instance.new("Frame")
     local UIGridLayout = Instance.new("UIGridLayout")
-    local stringedinstance = Instance.new("StringValue")
-
 
     MainButton.Name = "MainButton"
     MainButton.Parent = Buttons
@@ -993,95 +958,81 @@ function EpicLib:CreateTab(text)
     TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
     TextLabel.TextSize = 14.000
 
-        
     MainButton.MouseEnter:Connect(function()
-    Hover.Visible = true
+        Hover.Visible = true
     end)
        
     MainButton.MouseLeave:Connect(function()
         Hover.Visible = false
     end)
-    
 
-
-    --Properties:
-    
     MainContainer.Name = text
     MainContainer.Parent = Container
     MainContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     MainContainer.BackgroundTransparency = 1.000
     MainContainer.Position = UDim2.new(0.0250000004, 0, 0.0350000001, 0)
     MainContainer.Size = UDim2.new(0, 663, 0, 591)
+    MainContainer.Visible = false
     
-    local children = Container:GetChildren()
-    for i, child in ipairs(children) do
-	child.Visible = false
-    end
-    
-    MoonHome.Visible = true
     UIGridLayout.Parent = MainContainer
     UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
     UIGridLayout.CellPadding = UDim2.new(0, 20, 0, 20)
     UIGridLayout.CellSize = UDim2.new(0, 145, 0, 30)
 
- 
     MainButton.MouseButton1Click:Connect(function()
-    for i,v in next, Container:GetChildren() do
-        v.Visible = false
-
-    end
-    MainContainer.Visible = true
-    egrid.Parent = MainContainer
-    egrid.SortOrder = Enum.SortOrder.LayoutOrder
-    egrid.CellPadding = UDim2.new(0, 20, 0, 20)
-    egrid.CellSize = UDim2.new(0, 130, 0, 30)
+        for i,v in next, Container:GetChildren() do
+            if v:IsA("Frame") then
+                v.Visible = false
+            end
+        end
+        MainContainer.Visible = true
     end)
-    end
-
+    
+    return EpicLib
+end
 
 function EpicLib:CreateLabel(text, pathname)
-local UILabel = Instance.new("Frame")
-local useless1 = Instance.new("Frame")
-local useless2 = Instance.new("Frame")
-local useless3 = Instance.new("Frame")
+    local UILabel = Instance.new("Frame")
+    local useless1 = Instance.new("Frame")
+    local useless2 = Instance.new("Frame")
+    local useless3 = Instance.new("Frame")
+    local UILabelText = Instance.new("TextLabel")
 
-local UILabelText = Instance.new("TextLabel")
+    UILabel.Name = "UILabel"
+    UILabel.Parent = Container[pathname]
+    UILabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UILabel.Size = UDim2.new(0, 100, 0, 100)
 
+    useless1.Name = "useless1"
+    useless1.Parent = Container[pathname]
+    useless1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    useless1.BackgroundTransparency = 1
+    useless1.Size = UDim2.new(0, 100, 0, 100)
 
-UILabel.Name = "UILabel"
-UILabel.Parent = Container[pathname]
-UILabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-UILabel.Size = UDim2.new(0, 100, 0, 100)
+    useless2.Name = "useless2"
+    useless2.Parent = Container[pathname]
+    useless2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    useless2.BackgroundTransparency = 1
+    useless2.Size = UDim2.new(0, 100, 0, 100)
 
-useless1.Name = "useless1"
-useless1.Parent = Container[pathname]
-useless1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-useless1.BackgroundTransparency = 1
-useless1.Size = UDim2.new(0, 100, 0, 100)
+    useless3.Name = "useless3"
+    useless3.Parent = Container[pathname]
+    useless3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    useless3.BackgroundTransparency = 1
+    useless3.Size = UDim2.new(0, 100, 0, 100)
 
-useless2.Name = "useless2"
-useless2.Parent = Container[pathname]
-useless2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-useless2.BackgroundTransparency = 1
-useless2.Size = UDim2.new(0, 100, 0, 100)
-
-useless3.Name = "useless3"
-useless3.Parent = Container[pathname]
-useless3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-useless3.BackgroundTransparency = 1
-useless3.Size = UDim2.new(0, 100, 0, 100)
-
-UILabelText.Name = "UILabelText"
-UILabelText.Parent = UILabel
-UILabelText.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
-UILabelText.BorderColor3 = Color3.fromHex(colorid)
-UILabelText.Position = UDim2.new(0, 0, -0.0456852801, 0)
-UILabelText.Size = UDim2.new(0, 641, 0, 34)
-UILabelText.Font = Enum.Font.SourceSans
-UILabelText.Text = text
-UILabelText.TextColor3 = Color3.fromHex(colorid)
-UILabelText.TextSize = 14.000
+    UILabelText.Name = "UILabelText"
+    UILabelText.Parent = UILabel
+    UILabelText.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
+    UILabelText.BorderColor3 = Color3.fromHex(colorid)
+    UILabelText.Position = UDim2.new(0, 0, -0.0456852801, 0)
+    UILabelText.Size = UDim2.new(0, 641, 0, 34)
+    UILabelText.Font = Enum.Font.SourceSans
+    UILabelText.Text = text
+    UILabelText.TextColor3 = Color3.fromHex(colorid)
+    UILabelText.TextSize = 14.000
 end
+
 function EpicLib:CreateButton(text, pathname, callback)
     local callback = callback or function() end
     local BTNLib = Instance.new("TextButton")
@@ -1109,6 +1060,7 @@ function EpicLib:CreateToggle(text, pathname, callback)
     local enabled = false
     text = text or "Toggle"
     callback = callback or function() end
+    
     local ToggleFrame = Instance.new("Frame")
     local ToggleName = Instance.new("TextLabel")
     local ToggleBTN = Instance.new("TextButton")
@@ -1116,7 +1068,7 @@ function EpicLib:CreateToggle(text, pathname, callback)
     ToggleFrame.Name = "ToggleFrame"
     ToggleFrame.Parent = Container[pathname]
     ToggleFrame.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
-    ToggleFrame.BorderColor3 =  Color3.fromHex(colorid)
+    ToggleFrame.BorderColor3 = Color3.fromHex(colorid)
     ToggleFrame.Position = UDim2.new(0.277526408, 0, 0.152284265, 0)
     ToggleFrame.Size = UDim2.new(0, 100, 0, 36)
 
@@ -1128,7 +1080,7 @@ function EpicLib:CreateToggle(text, pathname, callback)
     ToggleName.Size = UDim2.new(0, 58, 0, 20)
     ToggleName.Font = Enum.Font.Code
     ToggleName.Text = text
-    ToggleName.TextColor3 =  Color3.fromHex(colorid)
+    ToggleName.TextColor3 = Color3.fromHex(colorid)
     ToggleName.TextScaled = true
     ToggleName.TextSize = 14.000
     ToggleName.TextWrapped = true
@@ -1155,129 +1107,119 @@ function EpicLib:CreateToggle(text, pathname, callback)
     ToggleBTN.MouseButton1Click:Connect(Fire)
     
     function actions:Set(arg)
-    ToggleBTN.BackgroundTransparency = enabled and 0 or 0.5
-    pcall(callback, arg)
+        ToggleBTN.BackgroundTransparency = enabled and 0 or 0.5
+        pcall(callback, arg)
     end
+    
+    return actions
+end
 
-    function EpicLib:CreateSlider(text, pathname, minvalue, maxvalue, callback)
+function EpicLib:CreateSlider(text, pathname, minvalue, maxvalue, callback)
+    text = text or "Slider"
+    minvalue = minvalue or 0
+    maxvalue = maxvalue or 100
+    callback = callback or function() end
 
-        text = text or "Slider"
-        minvalue = minvalue or 0
-        maxvalue = maxvalue or 100
+    local SliderFrame = Instance.new("Frame")
+    local SliderAmount = Instance.new("TextBox")
+    local SliderName = Instance.new("TextLabel")
+    local BackSlider = Instance.new("Frame")
+    local TASlider = Instance.new("Frame")
+    local TASBTN = Instance.new("TextButton")
 
-        callback = callback or function() end
+    SliderFrame.Name = "SliderFrame"
+    SliderFrame.Parent = Container[pathname]
+    SliderFrame.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
+    SliderFrame.BorderColor3 = Color3.fromHex(colorid)
+    SliderFrame.Position = UDim2.new(0.73001492, 0, 0.260575294, 0)
+    SliderFrame.Size = UDim2.new(0, 130, 0, 40)
 
+    SliderAmount.Name = "SliderAmount"
+    SliderAmount.Parent = SliderFrame
+    SliderAmount.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    SliderAmount.BackgroundTransparency = 1.000
+    SliderAmount.Position = UDim2.new(0.695, 0,0, 0)
+    SliderAmount.Size = UDim2.new(0, 58, 0, 12)
+    SliderAmount.Font = Enum.Font.SourceSans
+    SliderAmount.PlaceholderColor3 = Color3.fromHex(colorid)
+    SliderAmount.Text = "0"
+    SliderAmount.TextColor3 = Color3.fromHex(colorid)
+    SliderAmount.TextSize = 14.000
 
-        local SliderFrame = Instance.new("Frame")
-        local SliderAmount = Instance.new("TextBox")
-        local SliderName = Instance.new("TextLabel")
-        local BackSlider = Instance.new("Frame")
-        local TASlider = Instance.new("Frame")
-        local TASBTN = Instance.new("TextButton")
+    SliderName.Name = "SliderName"
+    SliderName.Parent = SliderFrame
+    SliderName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    SliderName.BackgroundTransparency = 1.000
+    SliderName.Position = UDim2.new(-0.025, 0,0.09, 0)
+    SliderName.Size = UDim2.new(0, 58, 0, 10)
+    SliderName.Font = Enum.Font.Code
+    SliderName.Text = text
+    SliderName.TextColor3 = Color3.fromHex(colorid)
+    SliderName.TextScaled = true
+    SliderName.TextSize = 14.000
+    SliderName.TextWrapped = true
 
-        SliderFrame.Name = "SliderFrame"
-        SliderFrame.Parent = Container[pathname]
-        SliderFrame.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
-        SliderFrame.BorderColor3 =  Color3.fromHex(colorid)
-        SliderFrame.Position = UDim2.new(0.73001492, 0, 0.260575294, 0)
-        SliderFrame.Size = UDim2.new(0, 130, 0, 40)
+    BackSlider.Name = "BackSlider"
+    BackSlider.Parent = SliderFrame
+    BackSlider.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    BackSlider.Position = UDim2.new(0.0769230798, 0, 0.5, 0)
+    BackSlider.Size = UDim2.new(0, 126,0, 7)
+    BackSlider.BorderSizePixel = 0
 
-        SliderAmount.Name = "SliderAmount"
-        SliderAmount.Parent = SliderFrame
-        SliderAmount.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-        SliderAmount.BackgroundTransparency = 1.000
-        SliderAmount.Position = UDim2.new(0.695, 0,0, 0)
-        SliderAmount.Size = UDim2.new(0, 58, 0, 12)
-        SliderAmount.Font = Enum.Font.SourceSans
-        SliderAmount.PlaceholderColor3 =  Color3.fromHex(colorid)
-        SliderAmount.Text = "0"
-        SliderAmount.TextColor3 =  Color3.fromHex(colorid)
-        SliderAmount.TextSize = 14.000
+    TASlider.Name = "TASlider"
+    TASlider.Parent = SliderFrame
+    TASlider.BackgroundColor3 = Color3.fromHex(colorid)
+    TASlider.Position = UDim2.new(0.0769230798, 0, 0.5, 0)
+    TASlider.Size = UDim2.new(0, 0,0, 7)
+    TASlider.BorderSizePixel = 0
 
-        SliderName.Name = "SliderName"
-        SliderName.Parent = SliderFrame
-        SliderName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-        SliderName.BackgroundTransparency = 1.000
-        SliderName.Position = UDim2.new(-0.025, 0,0.09, 0)
-        SliderName.Size = UDim2.new(0, 58, 0, 10)
-        SliderName.Font = Enum.Font.Code
-        SliderName.Text = text
-        SliderName.TextColor3 =  Color3.fromHex(colorid)
-        SliderName.TextScaled = true
-        SliderName.TextSize = 14.000
-        SliderName.TextWrapped = true
+    TASBTN.Name = "TASBTN"
+    TASBTN.Parent = SliderFrame
+    TASBTN.BackgroundColor3 = Color3.fromRGB(255, 170, 0)
+    TASBTN.BackgroundTransparency = 1.000
+    TASBTN.Position = UDim2.new(0.0769999996, 0, 0.5, 0)
+    TASBTN.Size = UDim2.new(0, 130,0, 7)
+    TASBTN.Font = Enum.Font.SourceSans
+    TASBTN.Text = " "
+    TASBTN.TextColor3 = Color3.fromRGB(0, 0, 0)
+    TASBTN.TextSize = 14.000
+    TASBTN.ZIndex = 999999999
 
-        BackSlider.Name = "BackSlider"
-        BackSlider.Parent = SliderFrame
-        BackSlider.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-        BackSlider.Position = UDim2.new(0.0769230798, 0, 0.5, 0)
-        BackSlider.Size = UDim2.new(0, 126,0, 7)
-        BackSlider.BorderSizePixel = 0
-
-
-TASlider.Name = "TASlider"
-TASlider.Parent = SliderFrame
-TASlider.BackgroundColor3 =  Color3.fromHex(colorid)
-TASlider.Position = UDim2.new(0.0769230798, 0, 0.5, 0)
-TASlider.Size = UDim2.new(0, 0,0, 7)
-TASlider.BorderSizePixel = 0
-
-TASBTN.Name = "TASBTN"
-TASBTN.Parent = SliderFrame
-TASBTN.BackgroundColor3 = Color3.fromRGB(255, 170, 0)
-TASBTN.BackgroundTransparency = 1.000
-TASBTN.Position = UDim2.new(0.0769999996, 0, 0.5, 0)
-TASBTN.Size = UDim2.new(0, 130,0, 7)
-TASBTN.Font = Enum.Font.SourceSans
-TASBTN.Text = " "
-TASBTN.TextColor3 = Color3.fromRGB(0, 0, 0)
-TASBTN.TextSize = 14.000
-TASBTN.ZIndex = 999999999
-
-        -----Variables-----
-local mouse = game.Players.LocalPlayer:GetMouse()
-local uis = game:GetService("UserInputService")
-local Value;
+    local mouse = game.Players.LocalPlayer:GetMouse()
+    local uis = game:GetService("UserInputService")
+    local Value
  
- 
- 
- 
------Main Code-----
- 
-TASBTN.MouseButton1Click:Connect(function()
-    Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 126) * TASlider.AbsoluteSize.X) + tonumber(minvalue)) or SliderAmount.Text
-    pcall(function()
-        callback(Value)
-    end)
-    TASlider.Size = UDim2.new(0, math.clamp(mouse.X - TASlider.AbsolutePosition.X, 0, 126), 0, 7)
-    moveconnection = mouse.Move:Connect(function()
-        SliderAmount.Text = Value
+    TASBTN.MouseButton1Click:Connect(function()
         Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 126) * TASlider.AbsoluteSize.X) + tonumber(minvalue)) or SliderAmount.Text
         pcall(function()
             callback(Value)
-            SliderAmount.Text = Value
         end)
         TASlider.Size = UDim2.new(0, math.clamp(mouse.X - TASlider.AbsolutePosition.X, 0, 126), 0, 7)
-    end)
-    releaseconnection = uis.InputEnded:Connect(function(Mouse)
-        if Mouse.UserInputType == Enum.UserInputType.MouseButton1 then
+        moveconnection = mouse.Move:Connect(function()
+            SliderAmount.Text = Value
             Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 126) * TASlider.AbsoluteSize.X) + tonumber(minvalue)) or SliderAmount.Text
             pcall(function()
                 callback(Value)
                 SliderAmount.Text = Value
             end)
             TASlider.Size = UDim2.new(0, math.clamp(mouse.X - TASlider.AbsolutePosition.X, 0, 126), 0, 7)
-            moveconnection:Disconnect()
-            releaseconnection:Disconnect()
-        end
+        end)
+        releaseconnection = uis.InputEnded:Connect(function(Mouse)
+            if Mouse.UserInputType == Enum.UserInputType.MouseButton1 then
+                Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 126) * TASlider.AbsoluteSize.X) + tonumber(minvalue)) or SliderAmount.Text
+                pcall(function()
+                    callback(Value)
+                    SliderAmount.Text = Value
+                end)
+                TASlider.Size = UDim2.new(0, math.clamp(mouse.X - TASlider.AbsolutePosition.X, 0, 126), 0, 7)
+                moveconnection:Disconnect()
+                releaseconnection:Disconnect()
+            end
+        end)
     end)
-
-
-end)
 end
 
 function EpicLib:CreateDropdown(text, pathname, list, callback)
-
     local dropvalue = 0
     local function dropthing()
         dropvalue = dropvalue + 31
@@ -1285,7 +1227,6 @@ function EpicLib:CreateDropdown(text, pathname, list, callback)
     local IsDropped = false
 
     callback = callback or function()end
-
     list = list or {}
     text = text or ""
 
@@ -1296,137 +1237,131 @@ function EpicLib:CreateDropdown(text, pathname, list, callback)
     local DropName = Instance.new("TextBox")
     local DropFrameContainer = Instance.new("Frame")
 
-
     Dropdown.Name = "Dropdown"
     Dropdown.Parent = Container[pathname]
     Dropdown.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
-    Dropdown.BorderColor3 =  Color3.fromHex(colorid)
+    Dropdown.BorderColor3 = Color3.fromHex(colorid)
     Dropdown.Position = UDim2.new(0.458521873, 0, 0.260575294, 0)
     Dropdown.Size = UDim2.new(0, 100, 0, 36)
-    
 
+    DropName.Name = "DropName"
+    DropName.Parent = Dropdown
+    DropName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    DropName.BackgroundTransparency = 1.000
+    DropName.Position = UDim2.new(0.0879999995, 0, 0.166999996, 0)
+    DropName.Size = UDim2.new(0, 58, 0, 20)
+    DropName.ZIndex = 999999999
+    DropName.ClearTextOnFocus = false
+    DropName.Font = Enum.Font.Code
+    DropName.TextScaled = true
+    DropName.PlaceholderColor3 = Color3.fromHex(colorid)
+    DropName.PlaceholderText = " "..text
+    DropName.Text = ""
+    DropName.TextColor3 = Color3.fromHex(colorid)
+    DropName.TextSize = 14.000
 
---Properties:
-
-DropName.Name = "DropName"
-DropName.Parent = Dropdown
-DropName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-DropName.BackgroundTransparency = 1.000
-DropName.Position = UDim2.new(0.0879999995, 0, 0.166999996, 0)
-DropName.Size = UDim2.new(0, 58, 0, 20)
-DropName.ZIndex = 999999999
-DropName.ClearTextOnFocus = false
-DropName.Font = Enum.Font.Code
-DropName.TextScaled = true
-DropName.PlaceholderColor3 = Color3.fromHex(colorid)
-DropName.PlaceholderText = " "..text
-DropName.Text = ""
-DropName.TextColor3 = Color3.fromHex(colorid)
-DropName.TextSize = 14.000
-
-DropdownFrame.Name = "DropdownFrame"
-DropdownFrame.Parent = Dropdown
-DropdownFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-DropdownFrame.BackgroundTransparency = 1.000
-DropdownFrame.Position = UDim2.new(0, 0, 1, 0)
-DropdownFrame.Size = UDim2.new(0, 130, 0, 89)
-DropdownFrame.Visible = false
-DropdownFrame.ZIndex = 6999999
-
-DropFrameContainer.Name = "DropFrameContainer"
-DropFrameContainer.Parent = DropdownFrame
-DropFrameContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-DropFrameContainer.BackgroundTransparency = 1.000
-DropFrameContainer.Position = UDim2.new(-0.010, 0.0001,0, 1)
-DropFrameContainer.Size = UDim2.new(0, 150, 0, dropvalue)
-DropFrameContainer.ZIndex = 9999999
-DropFrameContainer.ClipsDescendants = true
-
-DropdownBTN.Name = "DropdownBTN"
-DropdownBTN.Parent = Dropdown
-DropdownBTN.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-DropdownBTN.BackgroundTransparency = 1.000
-DropdownBTN.Position = UDim2.new(0.535000026, 0, 0.166999996, 0)
-DropdownBTN.Size = UDim2.new(0, 58, 0, 20)
-DropdownBTN.Font = Enum.Font.SourceSans
-DropdownBTN.Text = "+"
-DropdownBTN.TextColor3 =  Color3.fromHex(colorid)
-      
-DropdownBTN.TextScaled = true
-DropdownBTN.TextSize = 14.000
-DropdownBTN.TextWrapped = true
-DropdownBTN.ZIndex = 999999
-
-DropdownBTN.MouseButton1Click:Connect(function()
- if IsDropped then
-    IsDropped = false
+    DropdownFrame.Name = "DropdownFrame"
+    DropdownFrame.Parent = Dropdown
+    DropdownFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    DropdownFrame.BackgroundTransparency = 1.000
+    DropdownFrame.Position = UDim2.new(0, 0, 1, 0)
+    DropdownFrame.Size = UDim2.new(0, 130, 0, 89)
     DropdownFrame.Visible = false
+    DropdownFrame.ZIndex = 6999999
+
+    DropFrameContainer.Name = "DropFrameContainer"
+    DropFrameContainer.Parent = DropdownFrame
+    DropFrameContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    DropFrameContainer.BackgroundTransparency = 1.000
+    DropFrameContainer.Position = UDim2.new(-0.010, 0.0001,0, 1)
+    DropFrameContainer.Size = UDim2.new(0, 150, 0, dropvalue)
+    DropFrameContainer.ZIndex = 9999999
+    DropFrameContainer.ClipsDescendants = true
+
+    DropdownBTN.Name = "DropdownBTN"
+    DropdownBTN.Parent = Dropdown
+    DropdownBTN.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    DropdownBTN.BackgroundTransparency = 1.000
+    DropdownBTN.Position = UDim2.new(0.535000026, 0, 0.166999996, 0)
+    DropdownBTN.Size = UDim2.new(0, 58, 0, 20)
+    DropdownBTN.Font = Enum.Font.SourceSans
     DropdownBTN.Text = "+"
+    DropdownBTN.TextColor3 = Color3.fromHex(colorid)
+    DropdownBTN.TextScaled = true
+    DropdownBTN.TextSize = 14.000
+    DropdownBTN.TextWrapped = true
+    DropdownBTN.ZIndex = 999999
 
- else 
-    IsDropped = true
-    DropdownFrame.Visible = true
-    DropdownBTN.Text = "-"
- end
-end)
-
- UIGridLayout.Parent = DropFrameContainer
- UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
- UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
- UIGridLayout.CellPadding = UDim2.new(0, 5, 0, 0)
- UIGridLayout.CellSize = UDim2.new(0, 145, 0, 30)
-
-for i,v in next, list do
-    local BTNLib = Instance.new("TextButton")
-
-    dropthing()
-    DropFrameContainer.Size = UDim2.new(0, 147, 0, dropvalue)
-    BTNLib.Name = "BTNLib"
-    BTNLib.Parent = DropFrameContainer
-    BTNLib.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
-    BTNLib.BorderColor3 =  Color3.fromHex(colorid)
-    BTNLib.Size = UDim2.new(0, 150, 0, 59)
-    BTNLib.ZIndex = 999999999
-    BTNLib.Font = Enum.Font.Code
-    BTNLib.Text = v
-    BTNLib.TextColor3 =  Color3.fromHex(colorid)
-    BTNLib.TextScaled = false
-    BTNLib.TextSize = 14.000
-    BTNLib.TextWrapped = true
-
-    BTNLib.MouseButton1Click:Connect(function()
-        DropName.Text = " "..v
-        callback(v)
-        IsDropped = false
-        DropdownFrame.Visible = false
-        DropdownBTN.Text = "+"
+    DropdownBTN.MouseButton1Click:Connect(function()
+        if IsDropped then
+            IsDropped = false
+            DropdownFrame.Visible = false
+            DropdownBTN.Text = "+"
+        else 
+            IsDropped = true
+            DropdownFrame.Visible = true
+            DropdownBTN.Text = "-"
+        end
     end)
-    local searchBar = DropName
-    local items = DropFrameContainer
-    
-    local function UpdateResults()
-        local search = string.lower(searchBar.Text)
-        for i, v in	 pairs(items:GetChildren()) do
-            if v:IsA("GuiButton") then
-                if search ~= "" then
-                    local item = string.lower(v.Text)
-                    if string.find(item, search) then
-                        v.Visible = true
+
+    UIGridLayout.Parent = DropFrameContainer
+    UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    UIGridLayout.CellPadding = UDim2.new(0, 5, 0, 0)
+    UIGridLayout.CellSize = UDim2.new(0, 145, 0, 30)
+
+    for i,v in next, list do
+        local BTNLib = Instance.new("TextButton")
+
+        dropthing()
+        DropFrameContainer.Size = UDim2.new(0, 147, 0, dropvalue)
+        BTNLib.Name = "BTNLib"
+        BTNLib.Parent = DropFrameContainer
+        BTNLib.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
+        BTNLib.BorderColor3 = Color3.fromHex(colorid)
+        BTNLib.Size = UDim2.new(0, 150, 0, 59)
+        BTNLib.ZIndex = 999999999
+        BTNLib.Font = Enum.Font.Code
+        BTNLib.Text = v
+        BTNLib.TextColor3 = Color3.fromHex(colorid)
+        BTNLib.TextScaled = false
+        BTNLib.TextSize = 14.000
+        BTNLib.TextWrapped = true
+
+        BTNLib.MouseButton1Click:Connect(function()
+            DropName.Text = " "..v
+            callback(v)
+            IsDropped = false
+            DropdownFrame.Visible = false
+            DropdownBTN.Text = "+"
+        end)
+        
+        local searchBar = DropName
+        local items = DropFrameContainer
+        
+        local function UpdateResults()
+            local search = string.lower(searchBar.Text)
+            for i, v in pairs(items:GetChildren()) do
+                if v:IsA("GuiButton") then
+                    if search ~= "" then
+                        local item = string.lower(v.Text)
+                        if string.find(item, search) then
+                            v.Visible = true
+                        else
+                            v.Visible = false
+                        end
                     else
-                        v.Visible = false
+                        v.Visible = true
                     end
-                else
-                    v.Visible = true
                 end
             end
         end
+        
+        searchBar.Changed:Connect(UpdateResults)
     end
-    
-    searchBar.Changed:Connect(UpdateResults)
+end
 
-end
-end
-end
 return EpicLib
 end
+
 return lib
